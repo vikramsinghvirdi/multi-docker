@@ -1,0 +1,23 @@
+sudo: required
+services:
+    - docker
+
+before_install:
+    - docker build -t get2vj/complex-app-test -f ./complex-app/Dockerfile.dev ./complex-app
+
+script:
+    - docker run get2vj/complex-app-test npm test -- --no-watch --no-progress --code-coverage=true --browsers=ChromeHeadlessCI
+
+after_success:
+    - docker build -t get2vj/multi-complex-app ./complex-app
+    - docker build -t get2vj/multi-nginx ./nginx
+    - docker build -t get2vj/multi-server ./server
+    - docker build -t get2vj/multi-worker ./worker
+    # Log in to the docker CLI
+    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+    # Push images to docker hub
+    - docker push get2vj/multi-complex-app
+    - docker push get2vj/multi-nginx
+    - docker push get2vj/multi-server
+    - docker push get2vj/multi-worker
+
