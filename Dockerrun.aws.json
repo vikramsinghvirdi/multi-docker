@@ -1,0 +1,36 @@
+{
+  "AWSEBDockerrunversion": 2,
+  "containerDefinitions": [
+    {
+      "name": "complex-app",
+      "image": "get2vj/multi-complex-app",
+      "hostname": "client",
+      "essential": false
+    },
+    {
+      "name": "server",
+      "image": "get2vj/multi-server",
+      "hostname": "api",
+      "essential": false
+    },
+    {
+      "name": "worker",
+      "image": "get2vj/multi-worker",
+      "hostname": "worker",
+      "essential": false
+    },
+    {
+      "name": "nginx",
+      "image": "get2vj/multi-nginx",
+      "hostname": "nginx",
+      "essential": true,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": ["client", "server"]
+    }
+  ]
+}
