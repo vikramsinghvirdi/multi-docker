@@ -2,8 +2,8 @@
   "AWSEBDockerrunVersion": 2,
   "containerDefinitions": [
     {
-      "name": "complex-app",
-      "image": "get2vj/multi-complex-app",
+      "name": "client",
+      "image": "get2vj/multi-client",
       "hostname": "client",
       "essential": false,
       "memory": 128

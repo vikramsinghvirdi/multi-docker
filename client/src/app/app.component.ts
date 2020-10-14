@@ -10,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
   providers: [HttpClient]
 })
 export class AppComponent {
-  title = 'complex-app';
+  title = 'client';
   public values: any;
   public indexes: any;
   public form: FormGroup = new FormGroup({
