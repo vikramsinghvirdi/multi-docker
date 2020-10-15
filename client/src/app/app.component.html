@@ -18,7 +18,7 @@
               <input type="text" id="example" formControlName="number" placeholder="Number" class="clr-input" />
             </div>
           </div>
-          <button class="btn btn-primary" [disabled]="!form.valid">Submit</button>
+          <button class="btn btn-primary" [disabled]="!form.valid" (click)="submit()">Submit</button>
         </div>
       </form>
 
