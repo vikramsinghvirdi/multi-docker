@@ -35,5 +35,8 @@ export class AppComponent {
     await this.http.post('/api/values', {
       index: this.form.value
     }).toPromise();
+
+    this.fetchIndexes();
+    this.fetchValues();
   }
 }
